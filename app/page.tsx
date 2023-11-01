@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AuthButton from "./components/AuthButton";
+import InputBox from "./components/InputBox";
 
 export default function Home() {
   return (
@@ -14,11 +15,12 @@ export default function Home() {
             maiores, eaque eius enim corrupti. Adipisci porro doloribus
             similique sequi sunt quis sit.
           </h1>
-          <input
+          {/* <input
             type="text"
             placeholder="@ username"
             className="input w-full bg-gray-300 max-w-xs mt-10 text-black"
-          />
+          /> */}
+          <InputBox />
 
           {/* <button className="btn btn-active btn-accent mt-10">{`next ->`}</button> */}
           <AuthButton />
