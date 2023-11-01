@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthButton from "./components/AuthButton";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
             className="input w-full bg-gray-300 max-w-xs mt-10 text-black"
           />
 
-          <button className="btn btn-active btn-accent mt-10">{`next ->`}</button>
+          {/* <button className="btn btn-active btn-accent mt-10">{`next ->`}</button> */}
+          <AuthButton />
         </div>
       </div>
     </div>
