@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import AuthButton from "./components/AuthButton";
 import InputBox from "./components/InputBox";
+import { getMovies } from "@/lib/movie";
 
 export default function Home() {
   return (
@@ -24,6 +26,13 @@ export default function Home() {
 
           {/* <button className="btn btn-active btn-accent mt-10">{`next ->`}</button> */}
           <AuthButton />
+          <button
+            onClick={() => {
+              getMovies();
+            }}
+          >
+            Movie
+          </button>
         </div>
       </div>
     </div>
