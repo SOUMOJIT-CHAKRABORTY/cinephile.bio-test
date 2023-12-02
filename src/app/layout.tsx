@@ -8,11 +8,15 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
 export const metadata: Metadata = {
-  title: "NEXT AUTH COMPLETE TUTORIAL",
-  description: "-",
+  title: "Cinephile.bio",
+  description: "Cinephile.bio is a social network for movie lovers.",
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const session = await getServerSession(authOptions);
 
   return (

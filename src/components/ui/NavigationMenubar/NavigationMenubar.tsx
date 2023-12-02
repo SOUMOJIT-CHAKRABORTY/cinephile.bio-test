@@ -26,13 +26,17 @@ export default function NavigationMenubar() {
     <div className="bg-slate-400 w-full">
       <div className="flex items-center gap-5 justify-between max-w-screen-2xl px-7 md:px-10 mx-auto">
         <Link href={"/"} className="uppercase font-bold text-xl text-white">
-          Your Logo
+          <p className="border border-black py-2 px-3">Cinephile.bio</p>
         </Link>
 
         <div className="flex gap-2 items-center uppercase">
           {!session ? (
             menuItems.map((menuItem, index) => (
-              <Link key={index} href={menuItem?.linkUrl} className="hover:bg-black text-white px-5 py-4">
+              <Link
+                key={index}
+                href={menuItem?.linkUrl}
+                className="hover:bg-black text-white px-5 py-4"
+              >
                 {menuItem?.title}
               </Link>
             ))

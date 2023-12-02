@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 interface IUserRegister {
   name: string;
@@ -32,7 +33,8 @@ export default function RegistrationForm() {
     required: "Password is required",
     pattern: {
       value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[^ ]+[A-Za-z\d@$!%*?&]*$/,
-      message: "Password must contain at least one letter, one number, and one special character and should not contain spaces",
+      message:
+        "Password must contain at least one letter, one number, and one special character and should not contain spaces",
     },
   });
 
@@ -51,6 +53,7 @@ export default function RegistrationForm() {
       const response = await axios.post("/api/users/register", data);
       console.log("response", response);
       toast.success("User registration completed successfully");
+      redirect("/login");
       // toast success
     } catch (error: any) {
       // toast error
@@ -66,20 +69,45 @@ export default function RegistrationForm() {
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Name</Label>
-            <Input id="text" type="name" placeholder="Sandipan Das" {...register("name")} />
-            {errors?.name && <span className="text-red-500 text-sm"> {errors?.name?.message} </span>}
+            <Label htmlFor="email">Username</Label>
+            <Input
+              id="text"
+              type="name"
+              placeholder="@username"
+              {...register("name")}
+            />
+            {errors?.name && (
+              <span className="text-red-500 text-sm">
+                {" "}
+                {errors?.name?.message}{" "}
+              </span>
+            )}
           </div>
 
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" {...register("email")} />
-            {errors?.email && <span className="text-red-500 text-sm"> {errors?.email?.message} </span>}
+            <Input
+              id="email"
+              type="email"
+              placeholder="m@example.com"
+              {...register("email")}
+            />
+            {errors?.email && (
+              <span className="text-red-500 text-sm">
+                {" "}
+                {errors?.email?.message}{" "}
+              </span>
+            )}
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
             <Input id="password" type="password" {...register("password")} />
-            {errors?.password && <span className="text-red-500 text-sm"> {errors?.password?.message} </span>}
+            {errors?.password && (
+              <span className="text-red-500 text-sm">
+                {" "}
+                {errors?.password?.message}{" "}
+              </span>
+            )}
           </div>
         </CardContent>
         <CardFooter>
