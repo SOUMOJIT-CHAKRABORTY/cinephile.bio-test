@@ -1,12 +1,13 @@
-import { getServerSession } from "next-auth";
+"use client";
+import { usernameAtom } from "@/atoms/atom";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-// import { useRouter } from "next/navigation";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
-export default async function DashboardPage() {
-  const session = await getServerSession();
-  // const router = useRouter();
+export default function DashboardPage() {
+  const session = useSession();
   if (!session) {
     redirect("/login");
   }
@@ -16,7 +17,7 @@ export default async function DashboardPage() {
       <Link href="/dashboard/home">
         <button className="bg-blue-400 px-5 py-2">Home</button>
       </Link>
-      <Link href={`/dashboard/${session.user?.name}`}>
+      <Link href={`/dashboard/${session.data?.user.username}`}>
         <button className="bg-blue-400 px-5 py-2">Profile</button>
       </Link>
       <Link href="/dashboard/settings">

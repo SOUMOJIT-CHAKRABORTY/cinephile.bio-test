@@ -15,9 +15,13 @@ const Settings = async (props: Props) => {
           type="email"
           // label="Currently watching"
           //   labelPlacement={placement}
-          placeholder={`${session?.user?.name}`}
+          //   placeholder={`${session?.user?.name}`}
+          value={`${session?.user?.name}`}
+
           //   description={placement}
         />
+        <button className="bg-blue-400 px-3 py-2">Save</button>
+        <button className="bg-red-400">delete account</button>
       </div>
     </div>
   );

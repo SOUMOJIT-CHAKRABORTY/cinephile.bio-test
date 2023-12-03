@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
 import NavigationMenubar from "@/components/ui/NavigationMenubar/NavigationMenubar";
 import ToasterContext from "@/context/ToasterContext";
 import SessionProvider from "@/context/AuthContext";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+// import { RecoilRoot } from "recoil";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Cinephile.bio",
@@ -22,12 +22,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="bg-zinc-900">
+        {/* <RecoilRoot> */}
         <SessionProvider session={session}>
           <NavigationMenubar />
 
           {children}
           <ToasterContext />
         </SessionProvider>
+        {/* </RecoilRoot> */}
       </body>
     </html>
   );

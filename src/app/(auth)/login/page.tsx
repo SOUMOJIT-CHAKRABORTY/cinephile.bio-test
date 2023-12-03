@@ -28,7 +28,7 @@ export default async function LoginPage() {
                 Enter your email below to login your account
               </CardDescription>
             </CardHeader>
-            <LoginProvider />
+            {/* <LoginProvider /> */}
             <LoginForm />
           </Card>
         </div>

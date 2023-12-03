@@ -10,12 +10,12 @@ const menuItems = [
     linkUrl: "/login",
     description: "",
   },
-  {
-    icon: "",
-    title: "Register",
-    linkUrl: "/register",
-    description: "",
-  },
+  // {
+  //   icon: "",
+  //   title: "Register",
+  //   linkUrl: "/register",
+  //   description: "",
+  // },
 ];
 
 export default function NavigationMenubar() {
@@ -44,6 +44,7 @@ export default function NavigationMenubar() {
             <button
               className="hover:bg-black text-white px-5 py-4 uppercase"
               onClick={() => {
+                localStorage.removeItem("username");
                 signOut();
               }}
             >

@@ -29,7 +29,7 @@ export default async function RegisterPage() {
                 Enter your email below to create your account
               </CardDescription>
             </CardHeader>
-            <LoginProvider />
+            {/* <LoginProvider /> */}
             <RegistrationForm />
           </Card>
         </div>

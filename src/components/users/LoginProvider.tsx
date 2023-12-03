@@ -1,40 +1,37 @@
 "use client";
 import React from "react";
-import { CardContent } from "../ui/card";
-import { Button } from "../ui/button";
+// import { CardContent } from "../ui/card";
 import { signIn } from "next-auth/react";
+import { user } from "@nextui-org/react";
 
-const providers = [
-  { providerName: "github", Icon: "" },
-  { providerName: "google", Icon: "" },
-];
+// const providers = [
+//   // { providerName: "github", Icon: "" },
+//   { providerName: "google", Icon: "" },
+// ];
+type Props = {
+  username: string;
+};
 
-export default function LoginProvider() {
+export default function LoginProvider({ username }: Props) {
   const handleOAuthSignIn = (provider: string) => {
-    signIn(provider);
+    try {
+      localStorage.setItem("username", username);
+      const res = signIn(provider);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div>
-      <CardContent className="grid gap-4">
-        <div className="grid grid-cols-2 gap-6">
-          {providers.map((provider, index) => (
-            <Button key={index} variant="outline" className="capitalize" onClick={() => handleOAuthSignIn(provider?.providerName)}>
-              {/* <Icons.google className="mr-2 h-4 w-4" /> */}
-              {provider?.providerName}
-            </Button>
-          ))}
-        </div>
-
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-          </div>
-        </div>
-      </CardContent>
+      <button
+        className="bg-gray-500 text-gray-300 px-5 py-3 rounded-md hover:bg-gray-700 active:bg-gray-800 transform duration-150 ease-in-out text-lg w-full"
+        onClick={() => handleOAuthSignIn("google")}
+      >
+        {/* <Icons.google className="mr-2 h-4 w-4" /> */}
+        Continue
+      </button>
     </div>
   );
 }
